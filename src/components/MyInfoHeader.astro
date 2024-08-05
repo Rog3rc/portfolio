@@ -1,0 +1,57 @@
+---
+import { ILinks } from "./types/links";
+
+interface Props {
+  img: string;
+  links: Array<ILinks>;
+}
+
+const { img, links } = Astro.props;
+---
+
+<div
+  class="container d-flex justify-content-center align-items-center align-items-center"
+>
+  <div class="row row-cols-md-6">
+    <div class="col-md-4">
+      <img
+        src={img}
+        alt={img}
+        class="img-fluid rounded border border-4 border-danger-subtle"
+      />
+    </div>
+    <div class="col-md-8" id="bd-cont">
+      <p class="fs-3 fw-italic text-justify">
+        Hello, I'm Rog3rc, a computer systems engineer with 4 years of
+        experience in the field. My professional background has provided me with
+        a solid foundation in designing, developing, and managing innovative
+        technological solutions. I have worked on various projects ranging from
+        software development to systems administration, facing challenges that
+        have enriched my technical and managerial skills.
+      </p>
+      <p class="fs-5 fw-bold">My name is: Victor Guillermo Ortiz Rios</p>
+      <ul class="list-group w-50">
+        {
+          links.map((link) => {
+            return (
+              <a
+                href={link.value}
+                class="list-group-item list-group-item-action"
+              >
+                {link.name}
+              </a>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  #bd-cont {
+    border: solid 4px;
+    border-color: orange;
+    border-radius: 5px;
+  }
+</style>
